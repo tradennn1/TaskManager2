@@ -42,7 +42,6 @@ class ProfileFragment : Fragment() {
 
     private fun initLauncher() {
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-
             if (it.resultCode == AppCompatActivity.RESULT_OK) {
                 val image = it.data?.data
                 if (image != null) {

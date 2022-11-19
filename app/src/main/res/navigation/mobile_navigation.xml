@@ -33,5 +33,10 @@
         android:name="com.tradennn1.taskmanager2.ui.task.TaskFragment"
         android:label="Task"
         tools:layout="@layout/fragment_task" />
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.tradennn1.taskmanager2.ui.onBoarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
 
 </navigation>
