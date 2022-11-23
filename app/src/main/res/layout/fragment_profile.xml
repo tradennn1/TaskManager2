@@ -17,10 +17,18 @@
 
     <EditText
         android:id="@+id/tv_name"
-        android:layout_marginHorizontal="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:hint="Name"
         app:layout_constraintTop_toBottomOf="@id/profile_image" />
+
+    <EditText
+        android:id="@+id/tv_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:hint="Age"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

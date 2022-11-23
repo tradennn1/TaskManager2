@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
+import com.tradennn1.taskmanager2.App
 import com.tradennn1.taskmanager2.R
 import com.tradennn1.taskmanager2.databinding.FragmentHomeBinding
 import com.tradennn1.taskmanager2.ui.home.adapter.TaskAdapter
@@ -34,12 +35,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setFragmentResultListener(
-            "fr_task"
-        ) { _, result ->
-            val task = result.getSerializable("task") as Task
-            adapter.addTask(task)
-        }
+        var data = App.db.taskDao().getAllTask()
+        adapter.addTasks(data)
         binding.recyclerTask.adapter = adapter
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)

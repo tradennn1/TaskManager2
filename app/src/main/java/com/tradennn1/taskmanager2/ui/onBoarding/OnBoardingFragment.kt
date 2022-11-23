@@ -1,13 +1,18 @@
 package com.tradennn1.taskmanager2.ui.onBoarding
 
+import android.R
+import android.net.http.SslCertificate.saveState
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.tradennn1.taskmanager2.R
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
+import com.tradennn1.taskmanager2.Prefs
 import com.tradennn1.taskmanager2.databinding.FragmentOnBoardingBinding
 import me.relex.circleindicator.CircleIndicator3
+
 
 class OnBoardingFragment : Fragment() {
 
@@ -21,10 +26,22 @@ class OnBoardingFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = OnBoardingAdapter()
+        val adapter = OnBoardingAdapter(findNavController(),requireContext())
         binding.viewPager.adapter = adapter
+        binding.skip.setOnClickListener {
+            Prefs(requireContext()).saveState()
+            findNavController().navigateUp()
+        }
+        binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        val indicator : CircleIndicator3? = activity?.findViewById<CircleIndicator3>(binding.indicator.id)
+        indicator?.setViewPager(binding.viewPager)
+
     }
 
 }

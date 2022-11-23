@@ -10,7 +10,6 @@ class TaskAdapter() :
     RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
     private val tasks: ArrayList<Task> = arrayListOf()
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(
             ItemTaskBinding.inflate(
@@ -27,8 +26,14 @@ class TaskAdapter() :
     }
 
     fun addTask(task: Task) {
-        tasks.add(0,task)
+        tasks.add(0, task)
         notifyItemChanged(0)
+    }
+
+    fun addTasks(newTasks: List<Task>) {
+        this.tasks.clear()
+        this.tasks.addAll(newTasks)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
